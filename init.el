@@ -46,6 +46,10 @@
 (require 'starter-kit-ruby)
 ;; (require 'starter-kit-js)
 
+(add-to-list 'load-path (concat dotfiles-dir "/cucumber"))
+(require 'rspec-mode)
+(require 'feature-mode)
+
 (regen-autoloads)
 (load custom-file 'noerror)
 
@@ -56,6 +60,8 @@
 
 (if (file-exists-p system-specific-config) (load system-specific-config))
 (if (file-exists-p user-specific-config) (load user-specific-config))
+
+(require 'mnutt)
 
 (provide 'init)
 ;;; init.el ends here
