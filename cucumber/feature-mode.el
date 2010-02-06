@@ -202,6 +202,10 @@ are loaded on startup.  If nil, don't load snippets.")
 
     (global-set-key (kbd "C-c ,r") redoer-cmd)))
 
+(defun feature-open-eshell ()
+  "Open an eshell"
+  (switch-to-buffer-other-window " *eshell cmd*"))
+
 (defun feature-run-cucumber (cuke-opts &optional &key feature-file)
   "Runs cucumber with the specified options"
   (feature-register-verify-redo (list 'feature-run-cucumber 
@@ -209,12 +213,14 @@ are loaded on startup.  If nil, don't load snippets.")
 				      :feature-file feature-file))
   ;; redoer is registered
 
+  (if (get-buffer " *eshell cmd*") (kill-buffer " *eshell cmd*"))
+  (global-set-key (kbd "C-c ,e"), feature-open-eshell)
   (let ((opts-str    (mapconcat 'identity cuke-opts " "))
-	(feature-arg (if feature-file 
-			 (concat " FEATURE='" feature-file "'")
-		       "")))
-    (compile (concat "rake features --no-colors CUCUMBER_OPTS=\" " opts-str "\"" feature-arg)))
-  (end-of-buffer-other-window 0))
+	      (feature-arg (if feature-file 
+			       (concat " FEATURE='" feature-file "'")
+             "")))
+    (eshell-command (concat "rake features CUCUMBER_OPTS=\" " opts-str "\"" feature-arg " &")))
+  )
 
 (defun feature-escape-scenario-name (scenario-name)
   "Escapes all the characaters in a scenario name that mess up using in the -n options"
