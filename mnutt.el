@@ -29,6 +29,14 @@
 (setq default-tab-width 2)
 (setq tab-width 2)
 
+;;; Shell mode
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(setq ansi-color-names-vector ; better contrast colors
+      ["black" "red4" "green4" "yellow4"
+       "blue3" "magenta4" "cyan4" "white"])
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'compilation-mode-hook 'ansi-color-for-comint-mode-on)
+
 ;; Clojure
 ;;(eval-after-load 'clojure-mode '(clojure-slime-config))
 
@@ -60,6 +68,7 @@
 (require 'textmate)
 (textmate-mode)
 (require 'whitespace)
+(require 'ansi-color)
 
 ;; Major Modes
 
@@ -171,7 +180,7 @@
 ;;(require 'mercurial)
 
 ;; Font
-(set-face-font 'default "-apple-inconsolata-medium-r-normal--18-0-72-72-m-0-iso10646-1")
+(set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
 
 ;; Color Themes
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
@@ -230,5 +239,8 @@
 
 ;; Activate theme
 (color-theme-vivid-chalk)
+
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 (provide 'mnutt)
