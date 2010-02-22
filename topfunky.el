@@ -114,6 +114,14 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/cucumber"))
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+;; Cucumber menu
+(setq feature-mode-imenu-generic-expression
+      '(("Group" "\\s-*\\(\\(Feature\\|Scenario\\): .+\\)" 1)
+        ))
+(add-hook 'feature-mode-hook
+          (lambda ()
+            (setq imenu-generic-expression feature-mode-imenu-generic-expression)))
+
 
 ;; Javascript
 (setq js2-basic-offset 2)
