@@ -109,6 +109,12 @@
                       (ruby-complexity-mode)
                       )))
 
+
+
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/cucumber"))
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
 ;; Javascript
 (setq js2-basic-offset 2)
 (setq js2-auto-indent-flag nil)
