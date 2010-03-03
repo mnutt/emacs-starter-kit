@@ -269,6 +269,11 @@
                                          'fullboth)))
 (global-set-key (kbd "M-n") 'toggle-fullscreen)
 
+(defun recenter-to-top ()
+  "Take the current point and scroll it to the top of the screen."
+  (interactive)
+  (recenter 1))
+(global-set-key [(control shift l)] 'recenter-to-top)
 
 ;; Keyboard
 

@@ -9,6 +9,9 @@
 ;; and brighter; it simply makes everything else vanish."
 ;; -Neal Stephenson, "In the Beginning was the Command Line"
 
+;; Benchmarking
+(defvar *emacs-load-start* (current-time))
+
 ;; Load path etc:
 
 (setq dotfiles-dir (file-name-directory
@@ -56,6 +59,13 @@
 
 (if (file-exists-p system-specific-config) (load system-specific-config))
 (if (file-exists-p user-specific-config) (load user-specific-config))
+
+;; Benchmarking
+(message "My .emacs loaded in %ds"
+         (destructuring-bind (hi lo ms) (current-time)
+           (- (+ hi lo) (+ (first *emacs-load-start*) (second
+                                                       *emacs-load-start*)))))
+
 
 (provide 'init)
 ;;; init.el ends here
