@@ -98,7 +98,7 @@
 ;;                       (pycomplexity-mode))))
 
 ;; ruby-mode
-(require 'topfunky-sinatra)
+(require 'topfunky/sinatra)
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/ruby-complexity"))
 (require 'linum)
 (require 'ruby-complexity)
@@ -127,7 +127,7 @@
 (setq js2-basic-offset 2)
 (setq js2-auto-indent-flag nil)
 (setq javascript-indent-level 2)
-(require 'topfunky-js)
+(require 'topfunky/js)
 
 (add-hook 'javascript-mode-hook
           (lambda ()
@@ -209,6 +209,8 @@
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(require 'topfunky/markdown)
 
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
@@ -316,5 +318,5 @@
 (server-start)
 
 ;; Activate theme
-(load (concat dotfiles-dir "topfunky-theme.el"))
+(load (concat dotfiles-dir "topfunky/theme.el"))
 (color-theme-topfunky)

@@ -68,4 +68,4 @@
                       (setq imenu-create-index-function 'ruby-sinatra-imenu-create-index)
                       )))
 
-(provide 'topfunky-sinatra)
+(provide 'topfunky/sinatra)

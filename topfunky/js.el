@@ -25,4 +25,4 @@
           (lambda ()
             (setq imenu-generic-expression topfunky-js-imenu-generic-expression)))
 
-(provide 'topfunky-js)
+(provide 'topfunky/js)
