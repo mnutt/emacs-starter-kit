@@ -11,6 +11,12 @@
 ;; USAGE:
 ;;   (require 'topfunky/tf-markdown)
 
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
 (setq topfunky-markdown-imenu-generic-expression
       '(("Top-level Heading" "#\+ \\(\.\*\\)" 1)
         ))
