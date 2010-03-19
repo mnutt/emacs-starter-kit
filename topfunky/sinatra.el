@@ -26,6 +26,7 @@
         name next pos decl sing)
     (goto-char beg)
     ;; Nasty
+    ;; TODO: Look for MacRuby-style named parameters, too.
     (while (re-search-forward "^\\s *\\(\\(class\\s +\\|\\(class\\s *<<\\s *\\)\\|module\\s +\\)\\([^\(<\n ]+\\)\\|\\(def\\|alias\\)\\s +\\([^\(\n ]+\\)\\|\\(get\\|post\\|put\\|delete\\)\\s +\\([^ ]+\\)\\)" end t)
       (setq sing (match-beginning 3))
       (setq decl (match-string 5))

@@ -52,9 +52,10 @@
 (global-set-key (kbd "M-n") 'toggle-fullscreen)
 
 (defun recenter-to-top ()
-  "Take the current point and scroll it to the top of the screen."
+  "Take the current point and scroll it to within a
+   few lines of the top of the screen."
   (interactive)
-  (recenter 1))
+  (recenter 3))
 (global-set-key [(control shift l)] 'recenter-to-top)
 
 (prefer-coding-system 'utf-8)

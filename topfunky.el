@@ -91,8 +91,7 @@
 (require 'topfunky/applescript)
 (require 'topfunky/org)
 
-(require 'textile-mode)
-(add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+(require 'topfunky/textile)
 
 (require 'topfunky/markdown)
 (require 'topfunky/haml)
