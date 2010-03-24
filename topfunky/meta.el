@@ -37,11 +37,8 @@
   (interactive)
   (shell-command-to-string (concat "mate " buffer-file-name)))
 
-;; Custom task for PeepCode publishing
-(defun rake-generate-html ()
-  (interactive)
-  (rake "generate_html"))
-(global-set-key [(meta shift r)] 'rake-generate-html)
+;; Run Ruby Rake
+(global-set-key [(meta shift r)] 'rake)
 
 ;; Full screen toggle
 (defun toggle-fullscreen ()
@@ -57,6 +54,16 @@
   (interactive)
   (recenter 3))
 (global-set-key [(control shift l)] 'recenter-to-top)
+
+
+(defun kill-word-and-capitalize (arg)
+  "Delete one or more words and capitalize next word.
+With argument, do it a number of times.
+Useful for reworking the beginning of a sentence."
+  (interactive "p")
+  (kill-word arg) (capitalize-word 1))
+(global-set-key "∂" 'kill-word-and-capitalize)
+
 
 (prefer-coding-system 'utf-8)
 

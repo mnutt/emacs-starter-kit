@@ -90,13 +90,11 @@
 
 (require 'topfunky/applescript)
 (require 'topfunky/org)
-
 (require 'topfunky/textile)
-
 (require 'topfunky/markdown)
 (require 'topfunky/haml)
-
 (require 'topfunky/xcode)
+(require 'topfunky/keyboard)
 
 ;; gist
 (require 'gist)
@@ -108,8 +106,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
 (require 'color-theme)
 (color-theme-initialize)
-
-(require 'topfunky/keyboard)
 
 ;; Activate theme
 (load (concat dotfiles-dir "topfunky/theme.el"))

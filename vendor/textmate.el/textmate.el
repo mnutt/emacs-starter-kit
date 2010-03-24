@@ -108,6 +108,7 @@
   (define-key textmate-mode-map (kbd "M-/") 'comment-or-uncomment-region-or-line)
   (define-key textmate-mode-map [(control tab)] 'indent-region)
   (define-key textmate-mode-map [(meta t)] 'textmate-goto-file)
+  (define-key textmate-mode-map [(control T)] 'textmate-goto-file-gui)
   (define-key textmate-mode-map [(meta T)] 'textmate-goto-symbol))
 
 (defun textmate-completing-read (&rest args)
@@ -189,6 +190,14 @@ is a comment, uncomment."
                      (textmate-completing-read "Find file: "
                                                (or (textmate-cached-project-files)
                                                    (textmate-cache-project-files *textmate-project-root*))))))
+
+(defun textmate-goto-file-gui (&optional starting)
+  (interactive)
+  (when (null (textmate-set-project-root))
+    (error "Can't find any .git directory"))
+  (shell-command-to-string
+   (format "open -a FuzzyWindow '%s'"
+           (expand-file-name *textmate-project-root*))))
 
 (defun textmate-clear-cache ()
   (interactive)

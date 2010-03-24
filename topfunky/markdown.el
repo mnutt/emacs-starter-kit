@@ -18,7 +18,7 @@
 
 
 (setq topfunky-markdown-imenu-generic-expression
-      '(("Top-level Heading" "#\+ \\(\.\*\\)" 1)
+      '(("Top-level Heading" "^\\s-*\\(#\+ \.\*\\)" 1)
         ))
 
 (add-hook 'markdown-mode-hook
