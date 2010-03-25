@@ -1,3 +1,8 @@
+
+;; Lines tall, characters wide
+;;(set-frame-height (car (frame-list)) 20)
+;;(set-frame-width (car (frame-list)) 60)
+
 ;; Save backups in one place
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
@@ -32,10 +37,15 @@
   (byte-recompile-directory "~/.emacs.d" 0))
 
 
-;; Open current file in TextMate.
 (defun textmate-open-buffer ()
+  "Open the current file in TextMate"
   (interactive)
   (shell-command-to-string (concat "mate " buffer-file-name)))
+
+(defun tf-open-directory ()
+  "Open the current directory in the Finder."
+  (interactive)
+  (shell-command-to-string "open ."))
 
 ;; Run Ruby Rake
 (global-set-key [(meta shift r)] 'rake)
@@ -61,7 +71,7 @@
 With argument, do it a number of times.
 Useful for reworking the beginning of a sentence."
   (interactive "p")
-  (kill-word arg) (capitalize-word 1))
+  (kill-word arg) (delete-char 1) (capitalize-word 1))
 (global-set-key "∂" 'kill-word-and-capitalize)
 
 
