@@ -31,21 +31,31 @@
 (setq tab-width 4)
 
 
-;; Makes load time faster.
 (defun byte-recompile-home ()
+  "Speed load time by compiling dotfiles"
   (interactive)
   (byte-recompile-directory "~/.emacs.d" 0))
 
 
-(defun textmate-open-buffer ()
-  "Open the current file in TextMate"
+(defun tf-open-textmate ()
+  "Open the current file in TextMate."
   (interactive)
   (shell-command-to-string (concat "mate " buffer-file-name)))
 
-(defun tf-open-directory ()
+(defun tf-open-finder ()
   "Open the current directory in the Finder."
   (interactive)
   (shell-command-to-string "open ."))
+
+
+(defun tf-open-plainview ()
+  "Open the current file's HTML counterpart in Plainview browser."
+  (interactive)
+  (shell-command-to-string (concat "open -a Plainview.app "
+                                   (file-name-directory buffer-file-name)
+                                   "html/"
+                                   (file-name-nondirectory buffer-file-name)
+                                   ".html")))
 
 ;; Run Ruby Rake
 (global-set-key [(meta shift r)] 'rake)
