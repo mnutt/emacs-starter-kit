@@ -10,4 +10,6 @@
             (local-set-key [(meta shift left)] 'magit-status)
             ))
 
+(setq org-agenda-files (file-expand-wildcards "~/bin/org/*.org"))
+
 (provide 'topfunky/org)

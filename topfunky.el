@@ -29,7 +29,9 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
 (require 'textmate)
+(require 'peepopen)
 (textmate-mode)
+
 (require 'whitespace)
 
 (require 'topfunky/python)
