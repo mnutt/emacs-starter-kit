@@ -30,6 +30,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
 (require 'textmate)
 (require 'peepopen)
+(require 'topfunky/textmate-ext)
 (textmate-mode)
 
 (require 'whitespace)

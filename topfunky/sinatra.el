@@ -27,17 +27,20 @@
     (goto-char beg)
     ;; Nasty
     ;; TODO: Look for MacRuby-style named parameters, too.
-    (while (re-search-forward "^\\s *\\(\\(class\\s +\\|\\(class\\s *<<\\s *\\)\\|module\\s +\\)\\([^\(<\n ]+\\)\\|\\(def\\|alias\\)\\s +\\([^\(\n ]+\\)\\|\\(get\\|post\\|put\\|delete\\)\\s +\\([^ ]+\\)\\)" end t)
+    (while (re-search-forward "^\\s *\\(\\(class\\s +\\|\\(class\\s *<<\\s *\\)\\|module\\s +\\)\\([^\(<\n ]+\\)\\|\\(def\\|alias\\)\\s +\\([^\(\n ]+\\)\\|\\(get\\|post\\|put\\|delete\\)\\s +\\([^ ]+\\)\\|\\(test \"[^\"]+\"\\)\\)" end t)
       (setq sing (match-beginning 3))
       (setq decl (match-string 5))
       (setq next (match-end 0))
       (setq name (or (match-string 4) (match-string 6) (match-string 8)))
       (setq http-method (match-string 7))
+      (setq spec-name (match-string 9))
       (setq pos (match-beginning 0))
       (cond
        ;; Adds "get 'foo'" to the list of methods
        (http-method
         (push (cons (concat http-method " " name) pos) index-alist))
+       (spec-name
+        (push (cons spec-name pos) index-alist))
        ((string= "alias" decl)
         (if prefix (setq name (concat prefix name)))
         (push (cons name pos) index-alist))
