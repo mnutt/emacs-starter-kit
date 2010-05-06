@@ -10,6 +10,12 @@
   (define-key *textmate-mode-map* [C-return] 'tf-textmate-ext-previous-line)
   (define-key *textmate-mode-map* (kbd "M-[") 'align))
 
+(defun tf-textmate-ext-bind-ns-keys ()
+  (define-key *textmate-mode-map* [(meta /)] 'comment-or-uncomment-region-or-line)
+  (define-key *textmate-mode-map* [C-return] 'tf-textmate-ext-previous-line)
+  (define-key *textmate-mode-map* (kbd "M-[") 'align))
+
+
 (defun tf-textmate-ext-previous-line ()
   "Insert a blank line above the cursor and move the cursor up one line."
   (interactive)
