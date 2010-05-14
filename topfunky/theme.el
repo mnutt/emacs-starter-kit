@@ -288,6 +288,7 @@
      (underline ((t (:underline t))))
      (variable-pitch ((t (:family "Helvetica Neue"))))
      (textile-link-face (()t (:foreground "#222222")))
+     (textile-ul-bullet-face (()t (:foreground "#333333")))
      (w3m-anchor-face ((t (:bold t :foreground "DodgerBlue1" :weight bold))))
      (w3m-arrived-anchor-face ((t (:bold t :foreground "DodgerBlue3" :weight bold))))
      (w3m-header-line-location-content-face ((t (:background "dark olive green" :foreground "wheat"))))

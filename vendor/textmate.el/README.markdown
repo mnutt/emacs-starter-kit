@@ -7,6 +7,7 @@ TextMate Minor Mode
     ;;    ⌘T - Go to File
     ;;  ⇧⌘T - Go to Symbol
     ;;    ⌘L - Go to Line
+    ;;  ⇧⌘L - Select Line (or expand Selection to select lines)
     ;;    ⌘/ - Comment Line (or Selection/Region)
     ;;    ⌘] - Shift Right (currently indents region)
     ;;    ⌘[ - Shift Left  (not yet implemented)
@@ -46,6 +47,9 @@ Rave Reviews
 ![ReallyGreat](http://img.skitch.com/20081126-pk4qt8itb1482y7kg963af2aj1.png)
 ![MadeMyWeek](http://img.skitch.com/20081128-k6gxswy6hxm5y3airagt8t8d1d.png)
 ![ItRules](http://img.skitch.com/20081203-bbeenfrq885wy6xkxapirgujk3.png)
+![Baberaham](http://img.skitch.com/20081203-gi3w2adibmadrjtxqe6txw95eb.png)
+![TextMade](http://img.skitch.com/20081203-cm6j9n9drcdkhx4sr36b287jbt.png)
+![KeepOnTruckin](http://img.skitch.com/20081210-uby8x9uqfrsccy5jm96rhnkkt.png)
 ![DontMissIt](http://img.skitch.com/20081127-g77d1iy86nu1wdi7y8amhd6ixy.png)
 
 Author
