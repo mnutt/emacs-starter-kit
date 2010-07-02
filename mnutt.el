@@ -28,6 +28,7 @@
 
 (setq default-tab-width 2)
 (setq tab-width 2)
+(setq javascript-indent-mode 2)
 
 ;;; Shell mode
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
