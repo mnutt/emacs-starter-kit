@@ -127,6 +127,9 @@
   (rake "generate_html"))
 (global-set-key [(meta shift r)] 'rake-generate-html)
 
+;;; rhtml mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
+(require 'rhtml-mode)
 
 (autoload 'applescript-mode "applescript-mode" "major mode for editing AppleScript source." t)
 (setq auto-mode-alist
