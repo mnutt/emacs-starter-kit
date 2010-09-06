@@ -250,6 +250,7 @@
      (isearch ((t (:background "#d2d2d2" :foreground "black"))))
      (isearch-lazy-highlight-face ((t (:background "#333"))))
      (italic ((t (:italic t :foreground "chocolate3" :slant italic))))
+     (linum ((t (:foreground "grey14"))))
      (menu ((t (nil))))
      (message-cited-text-face ((t (:foreground "White"))))
      (message-header-cc-face ((t (:foreground "light cyan"))))
@@ -270,7 +271,7 @@
 
      (mouse ((t (:background "Grey"))))
      (paren-blink-off ((t (:foreground "brown"))))
-     (region ((t (:background "#222222"))))
+     (region ((t (:background "grey30"))))
      (ruler-mode-column-number-face ((t (:box (:color "grey76" :line-width 1 :style released-button) :background "grey76" :stipple nil :inverse-video nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :width normal :family "Inconsolata" :foreground "black"))))
      (ruler-mode-current-column-face ((t (:bold t :box (:color "grey76" :line-width 1 :style released-button) :background "grey76" :stipple nil :inverse-video nil :strike-through nil :overline nil :underline nil :slant normal :width normal :family "Inconsolata" :foreground "yellow" :weight bold))))
      (ruler-mode-default-face ((t (:family "Inconsolata" :width normal :weight normal :slant normal :underline nil :overline nil :strike-through nil :inverse-video nil :stipple nil :background "grey76" :foreground "grey64" :box (:color "grey76" :line-width 1 :style released-button)))))
