@@ -193,6 +193,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
 (require 'color-theme)
 (color-theme-initialize)
+(set-face-background 'region "grey40")
 
 ;; Functions
 

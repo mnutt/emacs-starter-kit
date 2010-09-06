@@ -87,7 +87,7 @@
      (cperl-array-face ((t (:foreground "Yellow"))))
      (cperl-hash-face ((t (:foreground "White"))))
      (cperl-nonoverridable-face ((t (:foreground "SkyBlue"))))
-     (cursor ((t (:background "purple"))))
+     (cursor ((t (:background "grey64"))))
      (custom-button-face ((t (:foreground "MediumSlateBlue" :underline t))))
      (custom-button-pressed-face ((t (:background "lightgrey" :foreground "black" :box (:line-width 2 :style pressed-button)))))
      (custom-changed-face ((t (:background "blue" :foreground "white"))))
