@@ -206,6 +206,9 @@
 
 ;; Keyboard
 
+;; Automatically indent on newline
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 ;; Split Windows
 (global-set-key [f6] 'split-window-horizontally)
 (global-set-key [f7] 'split-window-vertically)
