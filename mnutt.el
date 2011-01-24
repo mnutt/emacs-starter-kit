@@ -156,6 +156,13 @@
 
 (add-to-list 'auto-mode-alist '("\\.sake\\'" . ruby-mode))
 
+;; fix css mode
+(require 'css-mode)
+(setq cssm-indent-level 2)
+(setq cssm-newline-before-closing-bracket t)
+(setq cssm-indent-function #'cssm-c-style-indenter)
+(setq cssm-mirror-mode t)
+
 ;; XCODE
 (require 'objc-c-mode)
 
@@ -184,10 +191,11 @@
 ;;(require 'mercurial)
 
 ;; Show line numbers
-(global-linum-mode 1)
+;; (global-linum-mode 1)
+;; off because it doesn't work well
 
 ;; Font
-(set-face-font 'default "-apple-inconsolata-medium-r-normal--18-0-72-72-m-0-iso10646-1")
+(set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
 
 ;; Color Themes
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
