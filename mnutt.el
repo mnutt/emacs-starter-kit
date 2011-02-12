@@ -103,13 +103,13 @@
         ;;        try-expand-whole-kill
         ))
 
-(defun indent-or-complete ()
-  (interactive)
-  (if (and (looking-at "$") (not (looking-back "^\\s-*")))
-      (hippie-expand nil)
-    (indent-for-tab-command)))
-(add-hook 'find-file-hooks (function (lambda ()
-                                       (local-set-key (kbd "TAB") 'indent-or-complete))))
+;; (defun indent-or-complete ()
+;;   (interactive)
+;;   (if (and (looking-at "$") (not (looking-back "^\\s-*")))
+;;       (hippie-expand nil)
+;;     (indent-for-tab-command)))
+;; (add-hook 'find-file-hooks (function (lambda ()
+;;                                        (local-set-key (kbd "TAB") 'indent-or-complete))))
 
 ;; dabbrev-case-fold-search for case-sensitive search
 
@@ -122,28 +122,28 @@
 (define-key rinari-minor-mode-map [(control meta shift up)] 'rinari-find-model)
 (define-key rinari-minor-mode-map [(control meta shift right)] 'rinari-find-view)
 
-(defun rake-generate-html ()
-  (interactive)
-  (rake "generate_html"))
-(global-set-key [(meta shift r)] 'rake-generate-html)
-
-;;; rhtml mode
+;; rhtml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
 (require 'rhtml-mode)
 
+;; applescript mode
 (autoload 'applescript-mode "applescript-mode" "major mode for editing AppleScript source." t)
 (setq auto-mode-alist
       (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
 
+;; org mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
+;; textile mode
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
+;; markdown mode
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
 
+;; haml mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 (define-key haml-mode-map [(control meta down)] 'haml-forward-sexp)
@@ -151,6 +151,7 @@
 (define-key haml-mode-map [(control meta left)] 'haml-up-list)
 (define-key haml-mode-map [(control meta right)] 'haml-down-list)
 
+;; sass mode
 (require 'sass-mode)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
 
@@ -187,12 +188,13 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . objc-mode))
 (require 'objj-mode)
 
-;; Mercurial
-;;(require 'mercurial)
+;; Rsense for ruby completion
+;; (setq rsense-home "/usr/local/Cellar/rsense/0.3")
+;; (require 'rsense)
 
 ;; Show line numbers
+;; (require 'line-num)
 ;; (global-linum-mode 1)
-;; off because it doesn't work well
 
 ;; Font
 (set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
@@ -204,8 +206,6 @@
 (set-face-background 'region "grey40")
 
 ;; Functions
-
-(require 'line-num)
 
 ;; Full screen toggle
 (defun toggle-fullscreen ()
