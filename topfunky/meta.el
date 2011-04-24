@@ -30,8 +30,8 @@
 (setq backup-directory-alist (list (cons "." backup-dir)))
 
 ;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(setq default-tab-width 4)
-(setq tab-width 4)
+(setq default-tab-width 2)
+(setq tab-width 2)
 
 
 (defun byte-recompile-home ()
