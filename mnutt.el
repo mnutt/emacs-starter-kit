@@ -56,13 +56,18 @@
 (global-set-key [f5] 'refresh-file)
 
 ;; Snippets
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet.el"))
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory (concat dotfiles-dir "/vendor/yasnippet.el/snippets"))
+;; (add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet.el"))
+;; (require 'yasnippet)
+;; (yas/initialize)
+;; (yas/load-directory (concat dotfiles-dir "/vendor/yasnippet.el/snippets"))
 
 ;; Commands
 (require 'unbound)
+
+;; Prevent annoying bug "The mark is not set now so there is no region".
+;; Occurs with interactive "r" defuns.
+(set-mark (point))
+(deactivate-mark)
 
 ;; Minor Modes
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
@@ -133,6 +138,17 @@
 
 ;; org mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+;; coffee mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/coffee-mode"))
+(require 'coffee-mode)
+
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
 
 ;; textile mode
 (require 'textile-mode)
