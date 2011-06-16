@@ -179,6 +179,7 @@
 (setq cssm-newline-before-closing-bracket t)
 (setq cssm-indent-function #'cssm-c-style-indenter)
 (setq cssm-mirror-mode t)
+(setq css-indent-offset 2)
 
 ;; XCODE
 (require 'objc-c-mode)
