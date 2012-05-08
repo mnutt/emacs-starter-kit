@@ -2,6 +2,11 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/vendor"))
 
+(setq ns-auto-hide-menu-bar t)
+
+;; for homebrew:
+(setenv "PATH" (concat "/usr/local/bin" path-separator (getenv "PATH")))
+
 ;; Save backups in one place
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
@@ -37,6 +42,11 @@
        "blue3" "magenta4" "cyan4" "white"])
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'compilation-mode-hook 'ansi-color-for-comint-mode-on)
+
+
+;; Yaml mode
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; Clojure
 ;;(eval-after-load 'clojure-mode '(clojure-slime-config))
@@ -127,6 +137,9 @@
 (define-key rinari-minor-mode-map [(control meta shift up)] 'rinari-find-model)
 (define-key rinari-minor-mode-map [(control meta shift right)] 'rinari-find-view)
 
+;; rspec mode
+(setq rspec-use-rake-flag 0)
+
 ;; rhtml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
 (require 'rhtml-mode)
@@ -214,7 +227,7 @@
 ;; (global-linum-mode 1)
 
 ;; Font
-(set-face-font 'default "-apple-inconsolata-medium-r-normal--14-0-72-72-m-0-iso10646-1")
+(set-face-font 'default "-apple-inconsolata-medium-r-normal--16-0-72-72-m-0-iso10646-1")
 
 ;; Color Themes
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
@@ -242,14 +255,6 @@
 (global-set-key [f6] 'split-window-horizontally)
 (global-set-key [f7] 'split-window-vertically)
 (global-set-key [f8] 'delete-window)
-
-;; Some Mac-friendly key counterparts
-(global-set-key (kbd "M-s") 'save-buffer)
-(global-set-key (kbd "M-z") 'undo)
-
-;; Keyboard Overrides
-(define-key textile-mode-map (kbd "M-s") 'save-buffer)
-(define-key text-mode-map (kbd "M-s") 'save-buffer)
 
 (global-set-key [(meta up)] 'beginning-of-buffer)
 (global-set-key [(meta down)] 'end-of-buffer)
