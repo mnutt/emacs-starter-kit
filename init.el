@@ -35,8 +35,11 @@
 ;; Load up ELPA, the package manager:
 
 (require 'package)
+(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
+                  ("elpa" . "http://tromey.com/elpa/")))
+  (add-to-list 'package-archives source t))
 (package-initialize)
-;;(require 'starter-kit-elpa)
+(require 'starter-kit-elpa)
 
 ;; Load up starter kit customizations:
 
@@ -47,9 +50,10 @@
 (require 'starter-kit-eshell)
 (require 'starter-kit-lisp)
 (require 'starter-kit-ruby)
-;; (require 'starter-kit-js)
+(require 'starter-kit-js)
 
 (add-to-list 'load-path (concat dotfiles-dir "/cucumber"))
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/rspec-mode"))
 (require 'rspec-mode)
 (require 'feature-mode)
 

@@ -2,33 +2,45 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
-(eval-after-load 'js2-mode
-  '(progn
+;; NB: js-mode is part of Emacs since version 23.2 (with an alias
+;; javascript-mode). It is derived and updated from Espresso mode.
 
-     ;; Cosmetics
-     (font-lock-add-keywords
-      'js2-mode `(("\\(function *\\)("
-                   (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                             "ƒ")
-                             nil)))))
+(defvar esk-js-mode-hook nil)
+(defun run-esk-js-mode-hook ()
+  (run-hooks 'esk-js-mode-hook))
 
-     (font-lock-add-keywords
-      'js2-mode
-      '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
-         1 font-lock-warning-face t)))
+(defmacro esk-configure-javascript (name)
+  (let ((sym (intern name))
+        (mode (intern (concat name "-mode")))
+        (hook (intern (concat name "-mode-hook")))
+        (keymap (intern (concat name "-mode-map")))
+        (indent (intern (concat name "-indent-level"))))
+    `(progn
+       (autoload ',mode ,name ,(concat "Start " name "-mode") t)
+       (add-to-list 'auto-mode-alist '("\\.js$" . ,mode))
+       (add-to-list 'auto-mode-alist '("\\.json$" . ,mode))
+       (add-hook ',hook 'moz-minor-mode)
+       (add-hook ',hook 'esk-paredit-nonlisp)
+       (add-hook ',hook 'run-coding-hook)
+       (add-hook ',hook 'run-esk-js-mode-hook)
+       (setq ,indent 2)
 
-     (defun js-lambda () (interactive) (insert "function () {\n}")
-       (backward-char 5))
+       (eval-after-load ',sym
+         '(progn (define-key ,keymap "{" 'paredit-open-curly)
+                 (define-key ,keymap "}" 'paredit-close-curly-and-newline)
+                 (define-key ,keymap (kbd ",") 'self-insert-command))))))
 
-     (define-key js2-mode-map (kbd "C-c l") 'js-lambda)
-     (define-key js2-mode-map "\C-\M-h" 'backward-kill-word)
-     (define-key js2-mode-map (kbd "TAB") (lambda () (interactive)
-                                            (indent-for-tab-command)
-                                            (back-to-indentation)))
+(defun pretty-functions ()
+  (font-lock-add-keywords
+   nil `(("\\(function *\\)("
+          (0 (progn (compose-region (match-beginning 1)
+                                    (match-end 1) "ƒ")
+                    nil))))))
+(add-hook 'esk-js-mode-hook 'pretty-functions)
 
-     (add-hook 'js2-mode-hook 'coding-hook)
-     (setq js2-bounce-indent-flag nil
-           js2-indent-on-enter-key t)))
+(if (< (string-to-number emacs-version) 23.2)
+    (esk-configure-javascript "espresso")
+  (esk-configure-javascript "js"))
 
 (provide 'starter-kit-js)
 ;;; starter-kit-js.el ends here
