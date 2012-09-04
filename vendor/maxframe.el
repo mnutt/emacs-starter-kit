@@ -63,7 +63,7 @@ determining the maximize number of columns to fit on a display"
 
 ;; The default accounts for a Mac OS X display with a menubar
 ;; height of 22 pixels, a titlebar of 23 pixels, and no dock.
-(defcustom mf-display-padding-height (+ 22 33)
+(defcustom mf-display-padding-height (+ 22 33 45)
   "*Any extra display padding that you want to account for while
 determining the maximize number of rows to fit on a display"
   :type 'integer

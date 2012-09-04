@@ -228,6 +228,7 @@
 
 ;; Font
 (set-face-font 'default "-apple-inconsolata-medium-r-normal--16-0-72-72-m-0-iso10646-1")
+(set-face-attribute 'default nil :family "Menlo" :height 170 :weight 'normal)
 
 ;; Color Themes
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
@@ -282,6 +283,6 @@
 (color-theme-vivid-chalk)
 
 (require 'maxframe)
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; (add-hook 'window-setup-hook 'maximize-frame t)
 
 (provide 'mnutt)
