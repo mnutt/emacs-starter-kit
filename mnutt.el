@@ -223,9 +223,9 @@
 ;; (setq rsense-home "/usr/local/Cellar/rsense/0.3")
 ;; (require 'rsense)
 
-;; Show line numbers
-;; (require 'line-num)
-;; (global-linum-mode 1)
+;; Don't show line numbers
+(require 'line-num)
+(global-linum-mode 0)
 
 ;; Font
 (set-face-font 'default "-apple-inconsolata-medium-r-normal--16-0-72-72-m-0-iso10646-1")
