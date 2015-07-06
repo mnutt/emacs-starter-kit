@@ -1,9 +1,10 @@
 loaddefs.el*
 backups/*
+elpa/*
 *elc
 places
 .DS_Store
 auto-save-list
-
-/#topfunky.el#
+.smex-items
+/ac-comphist.dat
 /url/cookies

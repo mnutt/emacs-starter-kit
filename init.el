@@ -1,81 +1,46 @@
-;;; init.el --- Where all the magic begins
-;;
-;; Part of the Emacs Starter Kit
-;;
-;; This is the first thing to get loaded.
-;;
 ;; "Emacs outshines all other editing software in approximately the
 ;; same way that the noonday sun does the stars. It is not just bigger
 ;; and brighter; it simply makes everything else vanish."
 ;; -Neal Stephenson, "In the Beginning was the Command Line"
 
-;; Benchmarking
-(defvar *emacs-load-start* (current-time))
-
-;; Load path etc:
+(setq user-full-name "Michael Nutt")
+(setq user-mail-address "michael@nutt.im")
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
-(add-to-list 'load-path dotfiles-dir)
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
+(setq lisp-dir (concat dotfiles-dir "lisp/"))
+(add-to-list 'load-path lisp-dir)
+(setq custom-file (concat lisp-dir "custom.el"))
 
-;; These should be loaded on startup rather than autoloaded on demand
-;; since they are likely to be used in every session:
-
+(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/Users/michael/go/bin:/Users/michael/.rvm/bin" (getenv "PATH")))
 (require 'cl)
-(require 'saveplace)
-(require 'ffap)
-(require 'uniquify)
-(require 'ansi-color)
-(require 'recentf)
 
-;; Load up ELPA, the package manager:
+(require 'package-management)
+(require 'windowing)
+(require 'keybindings)
+(require 'autosave)
+(require 'indentation)
+(require 'mode-setup)
 
-(require 'package)
-(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
-                  ("elpa" . "http://tromey.com/elpa/")))
-  (add-to-list 'package-archives source t))
-(package-initialize)
-(require 'starter-kit-elpa)
+;; load theme
+(load-theme 'sanityinc-tomorrow-night t)
 
-;; Load up starter kit customizations:
+(require 'better-defaults)
 
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-lisp)
-(require 'starter-kit-ruby)
-(require 'starter-kit-js)
+;; configure smex for better M-x
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(add-to-list 'load-path (concat dotfiles-dir "/cucumber"))
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/rspec-mode"))
-(require 'rspec-mode)
-(require 'feature-mode)
+;; ido
+(setq ido-use-virtual-buffers t)
 
-(regen-autoloads)
-(load custom-file 'noerror)
+;; auto-close parens
+(require 'autopair)
 
-;; You can keep system- or user-specific customizations here:
-
-(setq system-specific-config (concat dotfiles-dir system-name ".el")
-      user-specific-config (concat dotfiles-dir user-login-name ".el"))
-
-(if (file-exists-p system-specific-config) (load system-specific-config))
-(if (file-exists-p user-specific-config) (load user-specific-config))
-
-(require 'mnutt)
-
-;; Benchmarking
-(message "My .emacs loaded in %ds"
-         (destructuring-bind (hi lo ms) (current-time)
-           (- (+ hi lo) (+ (first *emacs-load-start*) (second
-                                                       *emacs-load-start*)))))
-
+(require 'auto-complete-config)
+(ac-config-default)
 
 (provide 'init)
-;;; init.el ends here
