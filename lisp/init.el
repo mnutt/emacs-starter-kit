@@ -8,7 +8,7 @@
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
+(setq package-user-dir (concat dotfiles-dir "../elpa"))
 (setq lisp-dir (concat dotfiles-dir "lisp/"))
 (add-to-list 'load-path lisp-dir)
 (setq custom-file (concat lisp-dir "custom.el"))
