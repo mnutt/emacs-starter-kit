@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# find the file prettier is trying to prettify
+file=${BASH_ARGV[0]:="."}
+
+# optionally set where the real prettier command can be found
+prettier=`which prettier`
+
+node_modules=`/usr/local/bin/npm root`
+
+if [ -f "${node_modules}/.bin/prettier" ]; then
+   prettier="$node_modules/.bin/prettier"
+fi
+
+if $prettier --find-config-path ${file} > /dev/null; then
+    exec $prettier "$@"
+else
+    exec cat <&0
+fi
