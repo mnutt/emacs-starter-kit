@@ -6,6 +6,9 @@
 (setq user-full-name "Michael Nutt")
 (setq user-mail-address "michael@nutt.im")
 
+(require 'gnutls)
+(add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
+
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 (setq package-user-dir (concat dotfiles-dir "../elpa"))
@@ -34,13 +37,16 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
+;; lockfiles and ember don't get along
+(setq create-lockfiles nil)
+
 ;; ido
 (setq ido-use-virtual-buffers t)
 
-;; auto-close parens
-(require 'autopair)
+;; json uses 2 spaces
+(setq js-indent-level 2)
 
-(require 'auto-complete-config)
-(ac-config-default)
+;; auto close parens
+(require 'autopair)
 
 (provide 'init)

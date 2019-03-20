@@ -2,30 +2,34 @@
 
 (load "package")
 (package-initialize)
+
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
-(defvar mnutt/packages '(ac-slime
-                         ac-js2
-                         auto-complete
-                         autopair
+(defvar mnutt/packages '(autopair
                          better-defaults
                          coffee-mode
                          color-theme-sanityinc-tomorrow
+                         company
+                         company-tern
+                         company-flow
                          cyberpunk-theme
                          deft
                          feature-mode
+                         flow-minor-mode
                          flycheck
+                         flycheck-flow
                          gist
                          go-mode
                          graphviz-dot-mode
                          haml-mode
                          htmlize
                          js2-mode
+                         js2-refactor
                          magit
                          markdown-mode
                          marmalade
@@ -34,13 +38,18 @@
                          org
                          paredit
                          php-mode
+                         prettier-js
                          restclient
                          rvm
+                         rust-mode
                          smex
                          solarized-theme
+                         tide
+                         typescript-mode
                          web-beautify
                          web-mode
                          writegood-mode
+                         xref-js2
                          yaml-mode)
   "Default packages")
 
@@ -56,5 +65,8 @@
   (dolist (pkg mnutt/packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
+
+(add-to-list 'load-path "~/.emacs.d/vendor/")
+(require 'capnp-mode)
 
 (provide 'package-management)
