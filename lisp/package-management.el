@@ -22,7 +22,7 @@
                          feature-mode
                          flow-minor-mode
                          flycheck
-                         flycheck-flow
+                         flycheck-jest
                          gist
                          go-mode
                          graphviz-dot-mode
@@ -38,7 +38,6 @@
                          org
                          paredit
                          php-mode
-                         prettier-js
                          restclient
                          rvm
                          rust-mode

@@ -16,7 +16,7 @@
 (add-to-list 'load-path lisp-dir)
 (setq custom-file (concat lisp-dir "custom.el"))
 
-(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/Users/michael/go/bin:/Users/michael/.rvm/bin" (getenv "PATH")))
+(setenv "PATH" (concat "/Users/mnutt-mbp/.volta/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/Users/michael/go/bin" (getenv "PATH")))
 (require 'cl)
 
 (require 'package-management)
@@ -25,6 +25,7 @@
 (require 'autosave)
 (require 'indentation)
 (require 'mode-setup)
+(require 'add-node-modules-path)
 
 ;; load theme
 (load-theme 'sanityinc-tomorrow-night t)

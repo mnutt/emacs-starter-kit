@@ -1,19 +1,28 @@
 #!/bin/bash
 
+export PATH=$HOME/.volta/bin:$PATH
+
 # find the file prettier is trying to prettify
 file=${BASH_ARGV[0]:="."}
+dir="$(dirname "${file}")"
 
-# optionally set where the real prettier command can be found
+# default to global prettier
 prettier=`which prettier`
+has_config=false
 
-node_modules=`/usr/local/bin/npm root`
+# iterate upward through parent directories looking for prettier binary and config
+while [[ "$dir" != "" ]]; do
+    _prettier="${dir}/node_modules/.bin/prettier"
 
-if [ -f "${node_modules}/.bin/prettier" ]; then
-   prettier="$node_modules/.bin/prettier"
-fi
+    [ -e _prettier ] && prettier="${_prettier}"
+    [ -e "${dir}/.prettierrc" ] && has_config=true
 
-if $prettier --find-config-path ${file} > /dev/null; then
+    dir=${dir%/*}
+done
+
+if [ "$has_config" = true ]; then
     exec $prettier "$@"
 else
+    # prettier config not found, don't prettify and instead act as a pass-through
     exec cat <&0
 fi
