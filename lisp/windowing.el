@@ -43,8 +43,12 @@
       use-dialog-box nil)
 (show-paren-mode t)
 
-;; font
-(set-face-attribute 'default nil :family "Menlo" :height 170 :weight 'normal)
+;; font - Cascadia Code, Fira Code, etc...
+(cond
+   ((string-equal system-type "darwin")
+    (set-face-attribute 'default nil :family "Menlo" :height 170 :weight 'normal))
+   ((string-equal system-type "gnu/linux")
+    (set-face-attribute 'default nil :family "Fira Code" :height 170 :weight 'normal)))
 
 ;; Prevent annoying bug "The mark is not set now so there is no region".
 ;; Occurs with interactive "r" defuns.

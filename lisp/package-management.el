@@ -1,12 +1,13 @@
 ;; package management
 
 (load "package")
-(package-initialize)
 
 (add-to-list 'package-archives
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.milkbox.net/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(package-initialize)
 
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
@@ -15,7 +16,6 @@
                          coffee-mode
                          color-theme-sanityinc-tomorrow
                          company
-                         company-tern
                          company-flow
                          cyberpunk-theme
                          deft
@@ -38,6 +38,7 @@
                          org
                          paredit
                          php-mode
+                         prettier
                          restclient
                          rvm
                          rust-mode
