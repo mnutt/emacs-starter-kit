@@ -16,9 +16,10 @@
 (add-to-list 'load-path lisp-dir)
 (setq custom-file (concat lisp-dir "custom.el"))
 
-(setenv "PATH" (concat "/Users/mnutt-mbp/.volta/bin:/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/Users/michael/go/bin" (getenv "PATH")))
-(require 'cl)
+;; to find node.js
+(setq exec-path (append exec-path '((substitute-in-file-name "$HOME/.volta/bin"))))
 
+(require 'cl)
 (require 'package-management)
 (require 'windowing)
 (require 'keybindings)
