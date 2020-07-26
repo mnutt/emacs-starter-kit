@@ -17,7 +17,8 @@
 (setq custom-file (concat lisp-dir "custom.el"))
 
 ;; to find node.js
-(setq exec-path (append exec-path '((substitute-in-file-name "$HOME/.volta/bin"))))
+(setq volta-path (substitute-in-file-name "$HOME/.volta/bin"))
+(add-to-list 'exec-path volta-path)
 
 (require 'cl)
 (require 'package-management)
