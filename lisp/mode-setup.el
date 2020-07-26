@@ -70,7 +70,6 @@
 (defun missing-vendored-prettier
     ()
   (add-node-modules-path)
-  (message "HERE")
   (not (seq-some
     (lambda (path)
       (and
